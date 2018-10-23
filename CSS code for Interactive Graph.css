@@ -1,0 +1,83 @@
+
+/*average_fare */
+#layer {
+  polygon-fill: ramp([average_fare], (#f3e0f7, #dbbaed, #b998dd, #9178c4, #63589f), jenks);
+}
+#layer::outline {
+  line-width: 1;
+  line-color: #FFFFFF;
+  line-opacity: 0.5;
+}
+
+/*average_fare_rate*/
+#layer {
+    polygon-fill: ramp([average_fare_rate], (#f7f7f7, #cccccc, #969696, #636363, #252525), quantiles);
+  }
+  #layer::outline {
+    line-width: 1;
+    line-color: #FFFFFF;
+    line-opacity: 0.5;
+  }
+
+ /*average_speed*/ 
+  #layer {
+    polygon-fill: ramp([average_speed], (#ecda9a, #f1b973, #f7945d, #f86f56, #ee4d5a), jenks);
+  }
+  #layer::outline {
+    line-width: 1;
+    line-color: #FFFFFF;
+    line-opacity: 0.5;
+  }
+
+ /*average_area_pickup frequency*/ 
+  #layer {
+    polygon-fill: ramp([avg_area_pickups], (#ffc6c4, #ee919b, #cc607d, #9e3963, #672044), quantiles);
+  }
+  #layer::outline {
+    line-width: 1;
+    line-color: #FFFFFF;
+    line-opacity: 0.5;
+  }
+
+/*average_duration*/ 
+  #layer {
+    polygon-fill: ramp([average_duration], (#E4F1E1, #9CCDC1, #63A6A0, #337F7F, #0D585F), jenks);
+  }
+  #layer::outline {
+    line-width: 1;
+    line-color: #FFFFFF;
+    line-opacity: 0.5;
+  }
+
+/*average_distance*/ 
+  #layer {
+    polygon-fill: ramp([average_distance], (#ffffcc, #c2e699, #78c679, #31a354, #006837), jenks);
+  }
+  #layer::outline {
+    line-width: 1;
+    line-color: #FFFFFF;
+    line-opacity: 0.5;
+  }
+
+  /*Time Series Plot*/
+  Map {
+  -torque-frame-count: 256;
+  -torque-animation-duration: 30;
+  -torque-time-attribute: "datetime";
+  -torque-aggregation-function: "CDB_Math_Mode(value)";
+  -torque-resolution: 1;
+  -torque-data-aggregation: linear;
+}
+#layer {
+  marker-width: 3;
+  marker-fill: ramp([value], (#ffa1a1, #ff8484, #ff7171, #ff4e4e, #ff2828, #ff0000), (1, 2, 3, 4, 5, 6), "=");
+  marker-fill-opacity: 1;
+  marker-line-width: 0.5;
+  marker-line-color: #ffd400;
+  marker-line-opacity: 0.46;
+  comp-op: source-over;
+}
+#layer[frame-offset=1] {
+  marker-width: 5;
+  marker-fill-opacity: 0.5;
+}
